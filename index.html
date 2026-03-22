@@ -1,9 +1,148 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Marko's Trade</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ToolShop - Power Tools Store</title>
+
+<style>
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f5f5f5;
+}
+
+header {
+    background: #ffcc00;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    margin: 0;
+}
+
+.cart {
+    font-weight: bold;
+}
+
+.hero {
+    background: #333;
+    color: white;
+    padding: 60px;
+    text-align: center;
+}
+
+.products {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.product {
+    background: white;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.product img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+button {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.checkout {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: white;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+}
+</style>
 </head>
+
 <body>
-    <p>Project1</p>
+
+<header>
+    <h1>🔧 ToolShop</h1>
+    <div class="cart">Cart: €<span id="total">0</span></div>
+</header>
+
+<div class="hero">
+    <h2>Professional Tools for Every Job</h2>
+    <p>Best quality drills, saws and equipment</p>
+</div>
+
+<div class="products">
+
+<div class="product">
+    <img src="https://images.unsplash.com/photo-1586864387789-628af9feed72" />
+    <h3>Power Drill</h3>
+    <p>€120</p>
+    <button onclick="addToCart(120)">Add to cart</button>
+</div>
+
+<div class="product">
+    <img src="https://images.unsplash.com/photo-1581093588401-22b8c2f24f2d" />
+    <h3>Circular Saw</h3>
+    <p>€200</p>
+    <button onclick="addToCart(200)">Add to cart</button>
+</div>
+
+<div class="product">
+    <img src="https://images.unsplash.com/photo-1602524204013-6f5b09e6c02c" />
+    <h3>Angle Grinder</h3>
+    <p>€90</p>
+    <button onclick="addToCart(90)">Add to cart</button>
+</div>
+
+<div class="product">
+    <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952" />
+    <h3>Tool Set</h3>
+    <p>€150</p>
+    <button onclick="addToCart(150)">Add to cart</button>
+</div>
+
+</div>
+
+<div class="checkout">
+    <div>Total: €<span id="totalBottom">0</span></div>
+    <button onclick="checkout()">Checkout</button>
+</div>
+
+<script>
+let total = 0;
+
+function addToCart(price) {
+    total += price;
+    document.getElementById("total").innerText = total;
+    document.getElementById("totalBottom").innerText = total;
+}
+
+function checkout() {
+    alert("Proceed to Adyen payment: €" + total);
+
+    // TODO: integrate Adyen here
+    // Example:
+    // window.location.href = "/checkout.html";
+}
+</script>
+
 </body>
 </html>
